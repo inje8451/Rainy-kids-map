@@ -1,0 +1,8 @@
+# 개발·검증용 (배포 제외)
+verify.py
+verify-report.json
+shots/
+build/
+__pycache__/
+*.pyc
+.DS_Store

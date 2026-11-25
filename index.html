@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>비 오는 날 아이랑 · 雨の日キッズ | 인천·부천·김포·서울 실내 나들이</title>
+<meta name="description" content="비 오는 날 아이와 갈 만한 인천·부천·김포·서울 실내 명소 68곳. 운영시간·휴관일·요금·주차·예약을 확인해 정리한 한국어·일본어 지도." />
+<meta name="theme-color" content="#6b4b35" />
+<link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-header__inner">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true">☔</span>
+      <div class="brand__text">
+        <h1 id="appTitle">비 오는 날 아이랑</h1>
+        <p id="appSub">인천·부천·김포·서울 실내 나들이</p>
+      </div>
+    </div>
+
+    <div class="header__right">
+      <span class="chip chip--count" id="headerCount" aria-live="polite">68곳</span>
+      <div class="lang" role="group" aria-label="Language / 언어">
+        <button class="lang__btn is-active" data-lang="ko" type="button">KR</button>
+        <button class="lang__btn" data-lang="ja" type="button">JP</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-tabs" role="tablist" aria-label="보기 전환">
+  <button class="mobile-tabs__btn is-active" id="tabList" role="tab" aria-selected="true" type="button" data-view="list">목록</button>
+  <button class="mobile-tabs__btn" id="tabMap" role="tab" aria-selected="false" type="button" data-view="map">지도</button>
+</div>
+
+<main class="layout" id="layout">
+
+  <aside class="panel" id="panel" aria-label="장소 목록">
+    <div class="panel__top">
+      <div class="search">
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+        <input id="searchInput" type="search" autocomplete="off" placeholder="장소·동네·키워드 검색" aria-label="검색" />
+        <button id="searchClear" class="search__clear" type="button" aria-label="검색 지우기" hidden>×</button>
+      </div>
+
+      <div class="chips" id="regionChips" role="group" aria-label="권역"></div>
+
+      <div class="chips chips--sub" id="regionSubChips" role="group" aria-label="서울 권역" hidden></div>
+
+      <div class="panel__row">
+        <button id="filterToggle" class="btn btn--ghost" type="button" aria-expanded="false" aria-controls="filters">
+          <span id="filterToggleLabel">필터</span><span class="btn__badge" id="filterBadge" hidden>0</span>
+        </button>
+        <button id="resetBtn" class="btn btn--text" type="button">초기화</button>
+        <span class="count" id="count" aria-live="polite">68곳</span>
+      </div>
+
+      <div class="filters" id="filters">
+        <div class="filter-group">
+          <span class="filter-group__label" id="lblAge">연령</span>
+          <div class="chips" id="ageChips" role="group" aria-labelledby="lblAge"></div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-group__label" id="lblCost">비용</span>
+          <div class="chips" id="costChips" role="group" aria-labelledby="lblCost"></div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-group__label" id="lblTag">상황</span>
+          <div class="chips" id="tagChips" role="group" aria-labelledby="lblTag"></div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="todayOnly" />
+          <span class="switch__box" aria-hidden="true"></span>
+          <span id="lblToday">오늘 문 여는 곳만</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="results" id="results"></div>
+
+    <footer class="panel__foot">
+      <p id="updatedNote">정보 확인 2026-11-25 · 방문 전 공식 안내를 다시 확인하세요.</p>
+      <p id="coordNote">지도 좌표는 도로명주소 기준 근사 위치이며, 길찾기는 지도 앱 링크를 이용하세요.</p>
+    </footer>
+  </aside>
+
+  <section class="mapwrap" id="mapwrap" aria-label="지도">
+    <div id="map"></div>
+    <div class="map-legend" id="mapLegend">
+      <span><i class="dot dot--free"></i>무료</span>
+      <span><i class="dot dot--low"></i>1만원 이하</span>
+      <span><i class="dot dot--high"></i>유료</span>
+    </div>
+  </section>
+
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal__backdrop" data-close="1"></div>
+  <div class="modal__sheet" role="document">
+    <button class="modal__close" id="modalClose" type="button" aria-label="닫기">×</button>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=5319f5b0184334165a52b3413de7b6d8&libraries=clusterer&autoload=false" onerror="window.__kakaoFailed=true"></script>
+<script src="vendor/leaflet/leaflet.js"></script>
+<script src="data/places.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
