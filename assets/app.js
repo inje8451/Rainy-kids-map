@@ -1,4 +1,4 @@
-/* 비 오는 날 아이랑 · 雨の日キッズ — 앱 로직 (1단계) */
+/* 비쏙맵 BissokMap · ビッソクマップ — 앱 로직 (1단계) */
 (function () {
   "use strict";
 
@@ -8,7 +8,7 @@
   /* ─────────── 문구 ─────────── */
   var T = {
     ko: {
-      appTitle: "비 오는 날 아이랑",
+      appTitle: "비쏙맵",
       appSub: "인천·부천·김포·서울 실내 나들이",
       searchPh: "장소·동네·키워드 검색",
       searchClear: "검색 지우기",
@@ -46,8 +46,8 @@
       close: "닫기"
     },
     ja: {
-      appTitle: "雨の日キッズ",
-      appSub: "仁川・富川・金浦・ソウル 屋内スポット",
+      appTitle: "ビッソクマップ",
+      appSub: "雨の日・室内キッズマップ",
       searchPh: "場所・エリア・キーワード",
       searchClear: "検索を消す",
       filter: "絞り込み",
@@ -783,8 +783,8 @@
   function syncTexts() {
     document.documentElement.lang = state.lang;
     document.title = (state.lang === "ja"
-      ? "雨の日キッズ｜仁川・富川・金浦・ソウルの屋内スポット"
-      : "비 오는 날 아이랑 | 인천·부천·김포·서울 실내 나들이");
+      ? "ビッソクマップ（BissokMap）｜雨の日・室内キッズマップ 仁川・富川・金浦・ソウル"
+      : "비쏙맵 · BissokMap — 인천·부천·김포·서울 실내 아이 나들이");
     $("appTitle").textContent = t().appTitle;
     $("appSub").textContent = t().appSub;
     $("searchInput").placeholder = t().searchPh;
